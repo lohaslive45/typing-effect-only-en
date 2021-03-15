@@ -1,0 +1,59 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: consolas;
+    //!---使用此字型 可完美對齊游標(僅限 英文+符號)不含中文
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #121213;
+}
+
+.loader{
+    position: relative;
+    &::before{
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0; //!---游標 保持在字串 最右側
+        width: 2px;
+        height: 100%;
+        background: #03e9f4;
+        animation: blinkCursor 0.8s steps(3) infinite;
+    }
+}
+
+@keyframes blinkCursor{
+    0%, 75%{
+        opacity: 1;
+    }
+    76%, 100%{
+        opacity: 0;
+    }
+}
+
+h2{
+    position: relative;
+    color: #03e9f4;
+    letter-spacing: 5px;
+    font-size: 4em;
+    text-transform: uppercase;
+    animation: typing 8s steps(10) infinite;
+    //!---steps()數字為 整串字元數
+    overflow: hidden;
+}
+
+@keyframes typing{
+    0%, 90%, 100%{
+        width: 0;      
+    }
+    30%, 60%{
+        width: 401.86px;   
+        //!---此width值為 整串長度(由頁面檢查得知
+    }
+}
